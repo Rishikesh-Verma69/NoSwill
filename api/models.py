@@ -2,10 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, role, phone_number, password=None ):
+    def create_user(self,username, email, role, phone_number, password ):
         if not email:
             raise ValueError('User must have an email addrese')
         user = self.model(
+            username=username,
             email = self.normalize_email(email),
             role = role,
             phone_number = phone_number
@@ -14,12 +15,13 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
-    def create_superuser(self, first_name, last_name, email, password=None):
+    def create_superuser(self,username ,email, password=None):
         user = self.create_user(
+            username=username,
             email=self.normalize_email(email),
             password=password,
-            first_name = first_name,
-            last_name = last_name,
+            # first_name = first_name,
+            # last_name = last_name,
         )
         user.is_admin = True
         user.is_active = True
@@ -36,6 +38,7 @@ class User(AbstractBaseUser):
         (RESTURAUNT, 'resturaunt'),
         (RECIPIENT, 'recipient'),
     )
+    username = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(verbose_name='email', max_length=100, unique=True)
     phone_number = models.CharField(verbose_name='phone number', max_length=12, blank=True)
     role = models.PositiveSmallIntegerField(choices=ROLL_CHOICES, blank=True, null=True)
