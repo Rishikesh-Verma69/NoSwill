@@ -1,0 +1,3 @@
+
+
+NoSwill is an innovative Android application designed to minimize food waste in restaurants by connecting establishments with NGOs. The app facilitates the redistribution of leftover food to those in need, ensuring that consumable food reaches those who can benefit from it. Additionally, NoSwill offers a solution for food no longer suitable for consumption by enabling restaurants to sell these waste materials to fertilizer manufacturers. This dual-purpose approach not only reduces food waste but also promotes sustainable practices by converting inedible food into valuable agricultural products.
